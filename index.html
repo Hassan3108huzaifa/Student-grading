@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Grade</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  </style>
+</head>
+<body>
+  <h1>Student Grade</h1>
+  <label for="grade">Enter Student Grade:</label>
+  <input type="number" id="grade" min="0" max="100">
+  <button onclick="calculateGrade()">Calculate</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateGrade() {
+    var grade = parseInt(document.getElementById("grade").value);
+    var resultElement = document.getElementById("result");
+  
+    if (!isNaN(grade) && grade >= 0 && grade <= 100) {
+      if (grade >= 90) {
+        resultElement.textContent = "Student Grade: A+";
+      } else {
+        resultElement.textContent = "Student Grade: " + getGrade(grade);
+      }
+    } else {
+      resultElement.textContent = "Please enter a valid grade between 0 and 100.";
+    }
+  }
+  
+  function getGrade(score) {
+    if (score >= 80) {
+      return "A";
+    } else if (score >= 70) {
+      return "B";
+    } else if (score >= 60) {
+      return "C";
+    } else if (score >= 50) {
+      return "D";
+    } else {
+      return "F";
+    }
+  }
+
+  
+  </script>
+</body>
+</html>
